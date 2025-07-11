@@ -144,13 +144,9 @@ def portfolio():
             "filename": "job3.jpg",
             "location": "Tongaat",
             "description": "5000lt LIN Tank powered by a 0.75kw Centrifugal Pump secured with our custom fabricated Anti-Theft Cage"
-        },
-        
-        {
-            "filename": "job4.jpg",
-            "location": "Pietermaritzburg.",
-            "description": "5050lt jojo Tank powered by a 1.1kw Multistage Pump with 3 step filtration"
         }
+        
+     
 
         # Add more images as needed
     ]
