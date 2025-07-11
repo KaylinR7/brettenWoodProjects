@@ -7,7 +7,7 @@
     --dark-gray: #333333;
     --transition: all 0.3s ease;
     --header-height: 70px;
-    --vh: 1vh; /* For mobile viewport height fix */
+    --vh: 1vh;
 }
 
 * {
@@ -29,15 +29,7 @@ body {
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-}
-
-/* ==================== ACCESSIBLE TOUCH TARGETS ==================== */
-a, button, .nav-link {
-    min-width: 44px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    padding-top: var(--header-height); /* Add padding to account for fixed header */
 }
 
 /* ==================== HEADER & NAVIGATION ==================== */
@@ -55,7 +47,11 @@ header {
     height: var(--header-height);
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation - hidden on mobile */
+nav {
+    display: none;
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -70,30 +66,35 @@ nav ul li {
     color: var(--primary);
     font-weight: 500;
     transition: var(--transition);
+    padding: 0.5rem 0;
+    position: relative;
 }
 
-/* ==================== MOBILE MENU STYLES ==================== */
+/* ==================== HAMBURGER MENU ==================== */
 .hamburger {
-    display: none; /* Hidden by default */
-    cursor: pointer;
-    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
     border: none;
-    padding: 10px;
+    cursor: pointer;
+    padding: 0;
     z-index: 1001;
 }
 
 .hamburger span {
     display: block;
-    width: 25px;
+    width: 100%;
     height: 3px;
-    background-color: var(--primary);
-    margin: 5px 0;
+    background: var(--primary);
     transition: var(--transition);
 }
 
-/* Mobile menu active states */
+/* Active state for hamburger */
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(9px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -101,64 +102,48 @@ nav ul li {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ==================== MOBILE MENU ==================== */
+.mobile-menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background: var(--secondary);
+    transform: translateX(-100%);
+    transition: var(--transition);
+    padding: 2rem 5%;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mobile-menu .nav-link {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    display: block;
 }
 
 /* ==================== RESPONSIVE BREAKPOINTS ==================== */
-/* Mobile Styles (default) */
-@media (max-width: 767px) {
-    /* Mobile Menu Layout */
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    
-    nav ul {
-        position: fixed;
-        top: var(--header-height);
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - var(--header-height));
-        background-color: var(--secondary);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 2rem;
-        transition: var(--transition);
-    }
-    
-    nav ul.active {
-        left: 0;
-    }
-    
-    nav ul li {
-        margin: 1.5rem 0;
-        width: 100%;
-        text-align: center;
-    }
-    
-    .nav-link {
-        width: 100%;
-        padding: 1rem;
-    }
-    
-    /* Prevent zoom on input focus */
-    input, select, textarea {
-        font-size: 16px;
-    }
-}
-
-/* Tablet Styles */
+/* Tablet (768px and up) */
 @media (min-width: 768px) {
     .hero {
         flex-direction: row;
         min-height: 80vh;
         padding: calc(var(--header-height) + 2rem) 5% 5rem;
-    }
-
-    .hero-content {
-        padding-right: 2rem;
     }
 
     .features {
@@ -168,119 +153,91 @@ nav ul li {
 
     .feature-card {
         flex: calc(50% - 2rem);
-        margin: 0 1rem 2rem;
-    }
-
-    .testimonial-slider {
-        flex-direction: row;
-    }
-
-    .square-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-
-    .systems-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
 }
 
-/* Desktop Styles */
+/* Desktop (1024px and up) */
 @media (min-width: 1024px) {
     /* Hide hamburger on desktop */
     .hamburger {
         display: none;
     }
-    
-    /* Ensure desktop nav is visible */
-    nav ul {
-        position: static;
-        width: auto;
-        height: auto;
-        flex-direction: row;
-        background-color: transparent;
-        padding: 0;
-        display: flex;
+
+    /* Show desktop navigation */
+    nav {
+        display: block;
     }
-    
-    nav ul li {
-        margin: 0 0 0 2rem;
+
+    /* Hide mobile menu */
+    .mobile-menu {
+        display: none;
     }
-    
+
     .features {
         flex-wrap: nowrap;
-    }
-    
-    .feature-card {
-        flex: 1;
-        margin: 0 1rem;
-    }
-}
-
-/* Large Desktop Styles */
-@media (min-width: 1200px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .hero-image {
-        height: 400px;
-    }
-}
-
-/* ==================== ACCESSIBILITY IMPROVEMENTS ==================== */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* iOS Viewport Height Fix */
-@supports (-webkit-touch-callout: none) {
-    :root {
-        --vh: calc(var(--vh, 1vh) * 100);
     }
 }
 
 /* ==================== EXISTING COMPONENT STYLES ==================== */
-/* (Your existing hero, features, testimonials, etc. styles remain unchanged) */
+/* Hero Section */
 .hero {
+    display: flex;
     flex-direction: column;
     padding: calc(var(--header-height) + 2rem) 5% 3rem;
     min-height: auto;
 }
 
 .hero-content {
-    padding-right: 0;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .hero-title {
     font-size: 2.2rem;
+    margin-bottom: 1rem;
 }
 
 .hero-image {
-    height: 300px;
     width: 100%;
-    margin-bottom: 2rem;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-/* Button Sizing for Touch */
-.cta-button, .secondary-button {
-    padding: 1rem 2rem;
-    min-width: 160px;
-}
-
-/* Features Grid */
+/* Features */
 .features {
+    display: flex;
     flex-direction: column;
     padding: 3rem 5%;
+    gap: 2rem;
 }
 
 .feature-card {
-    margin: 0 0 2rem 0;
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: var(--transition);
 }
 
-/* Continue with all your other existing component styles... */
+/* Add all your other existing component styles below... */
+
+/* ==================== UTILITY CLASSES ==================== */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: var(--secondary);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    min-width: 160px;
+    text-align: center;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
