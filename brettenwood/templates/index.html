@@ -1,60 +1,68 @@
-{% extends "base.html" %}
-
-{% block content %}
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Reliable Water Backup Solutions for Your Home</h1>
-        <p class="hero-subtitle">Professional installation and maintenance services in KwaZulu-Natal</p>
-        <a href="{{ url_for('systems') }}" class="cta-button">Explore Our Systems</a>
-    </div>
-    <div class="hero-image">
-        <div class="water-animation"></div>
-    </div>
-</section>
-
-<section class="features">
-    <div class="feature-card">
-        <div class="feature-icon">
-            <i class="fas fa-tint"></i>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Improved viewport tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BrettenWood Projects - Water Backup Systems & Home Maintenance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Preconnect to improve font loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1 class="logo" data-text="BrettenWood">BrettenWood</h1>
+            <span class="logo-sub">Projects</span>
         </div>
-        <h3>Water Backup Systems</h3>
-        <p>From 1000L to 5000L JoJo tank systems with professional installation</p>
-    </div>
-    <div class="feature-card">
-        <div class="feature-icon">
-            <i class="fas fa-home"></i>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link">About Us</a></li>
+                <li><a href="{{ url_for('systems') }}" class="nav-link">Water Systems</a></li>
+                <li><a href="{{ url_for('portfolio') }}" class="nav-link">Portfolio</a></li>
+                <li><a href="{{ url_for('reviews') }}" class="nav-link">Reviews</a></li>
+                <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" aria-label="Mobile menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <h3>Home Maintenance</h3>
-        <p>Comprehensive home maintenance services to keep your property in top condition</p>
-    </div>
-    <div class="feature-card">
-        <div class="feature-icon">
-            <i class="fas fa-award"></i>
-        </div>
-        <h3>Quality Guarantee</h3>
-        <p>All our work comes with a satisfaction guarantee and after-service support</p>
-    </div>
-</section>
+    </header>
 
-<section class="testimonial-preview">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial-slider">
-        {% for review in reviews[:3] %}
-        <div class="testimonial">
-            <div class="stars">
-                {% for i in range(5) %}
-                {% if i < review.rating %}
-                <i class="fas fa-star"></i>
-                {% else %}
-                <i class="far fa-star"></i>
-                {% endif %}
-                {% endfor %}
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BrettenWood Projects</h3>
+                <p>Specialists in Water Backup Systems & Home Maintenance</p>
             </div>
-            <p>"{{ review.comment }}"</p>
-            <span>- {{ review.name }}</span>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> <a href="tel:+27311234567">+27 31 123 4567</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@brettenwood.co.za">info@brettenwood.co.za</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, South Africa</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('systems') }}">Our Systems</a></li>
+                    <li><a href="{{ url_for('contact') }}">Get a Quote</a></li>
+                </ul>
+            </div>
         </div>
-        {% endfor %}
-    </div>
-    <a href="{{ url_for('reviews') }}" class="secondary-button">View All Reviews</a>
-</section>
-{% endblock %}
+        <div class="footer-bottom">
+            <p>&copy; 2023 BrettenWood Projects. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>
