@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Reviews - BrettenWood Projects{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">
+                    <i class="fas fa-star me-3"></i>Customer Reviews
+                </h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                    See what our satisfied customers have to say about our services
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Review Summary -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Customer Satisfaction</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Based on {{ reviews|length }} customer reviews
+                </p>
+            </div>
+        </div>
+        
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="review-stat">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-star display-3 text-warning"></i>
+                    </div>
+                    <h3 class="fw-bold">4.9/5</h3>
+                    <p class="text-muted">Average Rating</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="review-stat">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-users display-3 text-primary"></i>
+                    </div>
+                    <h3 class="fw-bold counter" data-target="{{ reviews|length }}">0</h3>
+                    <p class="text-muted">Total Reviews</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="review-stat">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-thumbs-up display-3 text-success"></i>
+                    </div>
+                    <h3 class="fw-bold">98%</h3>
+                    <p class="text-muted">Recommend Us</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="review-stat">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-medal display-3 text-warning"></i>
+                    </div>
+                    <h3 class="fw-bold">5 Star</h3>
+                    <p class="text-muted">Service Quality</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leave a Review -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="review-form-card" data-aos="fade-up">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white text-center">
+                            <h3 class="mb-0">
+                                <i class="fas fa-edit me-2"></i>Leave a Review
+                            </h3>
+                            <p class="mb-0 mt-2 opacity-75">Share your experience with BrettenWood Projects</p>
+                        </div>
+                        
+                        <div class="card-body p-4">
+                            <form method="POST" action="{{ url_for('submit_review') }}" id="reviewForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">
+                                            <i class="fas fa-user me-1"></i>Full Name *
+                                        </label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">
+                                            <i class="fas fa-envelope me-1"></i>Email Address
+                                        </label>
+                                        <input type="email" class="form-control" id="email" name="email">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">
+                                        <i class="fas fa-heading me-1"></i>Review Title *
+                                    </label>
+                                    <input type="text" class="form-control" id="title" name="title" 
+                                           placeholder="Brief summary of your experience" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-star me-1"></i>Rating *
+                                    </label>
+                                    <div class="star-rating" data-aos="fade-up">
+                                        <input type="hidden" name="rating" value="0">
+                                        <span class="star text-muted" data-rating="1">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="star text-muted" data-rating="2">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="star text-muted" data-rating="3">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="star text-muted" data-rating="4">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="star text-muted" data-rating="5">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block mt-1">Click to rate your experience</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="review" class="form-label">
+                                        <i class="fas fa-comment me-1"></i>Your Review *
+                                    </label>
+                                    <textarea class="form-control" id="review" name="review" rows="5" 
+                                              placeholder="Tell us about your experience with BrettenWood Projects..." required></textarea>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-dark btn-custom btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Submit Review
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Customer Reviews -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">What Our Customers Say</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Real reviews from real customers
+                </p>
+            </div>
+        </div>
+        
+        {% if reviews %}
+        <div class="row">
+            {% for review in reviews %}
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h6 class="mb-0">{{ review.name }}</h6>
+                                <small class="text-muted">{{ review.date }}</small>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            {% for i in range(1, 6) %}
+                                {% if i <= review.rating %}
+                                    <i class="fas fa-star text-warning"></i>
+                                {% else %}
+                                    <i class="fas fa-star text-muted"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="review-content">
+                        <h6 class="review-title">{{ review.title }}</h6>
+                        <p class="review-text">{{ review.review }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-lg-12 text-center" data-aos="fade-up">
+                <div class="no-reviews">
+                    <i class="fas fa-star display-4 text-muted mb-3"></i>
+                    <h4 class="text-muted">No reviews yet</h4>
+                    <p class="text-muted">Be the first to leave a review for BrettenWood Projects!</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-right">
+                <h2 class="mb-3">Experience Our 5-Star Service</h2>
+                <p class="lead mb-0">
+                    Join hundreds of satisfied customers who trust BrettenWood Projects 
+                    for their water backup and maintenance needs.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-custom btn-lg">
+                    <i class="fas fa-phone me-2"></i>Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.review-form-card .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.star-rating {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.star-rating .star {
+    transition: all 0.3s ease;
+    margin-right: 5px;
+}
+
+.star-rating .star:hover {
+    transform: scale(1.2);
+}
+
+.review-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 15px;
+}
+
+.review-rating {
+    font-size: 1.2rem;
+}
+
+.review-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.review-text {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.review-stat {
+    padding: 20px;
+}
+
+.no-reviews {
+    padding: 60px 20px;
+}
+
+@media (max-width: 768px) {
+    .star-rating {
+        font-size: 1.5rem;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .review-author {
+        margin-bottom: 10px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced star rating functionality
+    const starRatings = document.querySelectorAll('.star-rating');
+    
+    starRatings.forEach(rating => {
+        const stars = rating.querySelectorAll('.star');
+        const input = rating.querySelector('input[type="hidden"]');
+        let currentRating = 0;
+        
+        stars.forEach((star, index) => {
+            star.addEventListener('click', function() {
+                currentRating = index + 1;
+                input.value = currentRating;
+                updateStars(stars, currentRating);
+                
+                // Add animation effect
+                star.style.transform = 'scale(1.3)';
+                setTimeout(() => {
+                    star.style.transform = 'scale(1)';
+                }, 200);
+            });
+            
+            star.addEventListener('mouseenter', function() {
+                const hoverRating = index + 1;
+                updateStars(stars, hoverRating);
+            });
+        });
+        
+        rating.addEventListener('mouseleave', function() {
+            updateStars(stars, currentRating);
+        });
+    });
+    
+    function updateStars(stars, rating) {
+        stars.forEach((star, index) => {
+            if (index < rating) {
+                star.classList.remove('text-muted');
+                star.classList.add('text-warning');
+            } else {
+                star.classList.remove('text-warning');
+                star.classList.add('text-muted');
+            }
+        });
+    }
+    
+    // Form validation enhancement
+    const reviewForm = document.getElementById('reviewForm');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(e) {
+            const rating = this.querySelector('input[name="rating"]').value;
+            
+            if (rating === '0') {
+                e.preventDefault();
+                alert('Please select a rating before submitting your review.');
+                return false;
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting Review...';
+            submitBtn.disabled = true;
+        });
+    }
+});
+</script>
+{% endblock %}

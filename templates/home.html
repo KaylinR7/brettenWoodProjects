@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}BrettenWood Projects - Water Backup Systems & House Maintenance in KZN{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-aos="fade-up">
+                        BrettenWood Projects
+                    </h1>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        Water Backup Systems & House Maintenance Specialists
+                    </p>
+                    <p class="hero-description" data-aos="fade-up" data-aos-delay="400">
+                        Serving KwaZulu-Natal with reliable water backup solutions, professional Jojo tank installations, and comprehensive house maintenance services.
+                    </p>
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+                        <a href="{{ url_for('systems') }}" class="btn btn-outline-light btn-custom me-3">
+                            <i class="fas fa-cogs me-2"></i>View Systems
+                        </a>
+                        <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-custom">
+                            <i class="fas fa-phone me-2"></i>Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="400">
+                <div class="hero-image text-center">
+                    <i class="fas fa-water display-1 text-white opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">About BrettenWood Projects</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Your trusted partner for water security and home maintenance
+                </p>
+            </div>
+        </div>
+        
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="about-content">
+                    <p class="lead mb-4">
+                        BrettenWood Projects is a leading provider of water backup systems and house maintenance services throughout KwaZulu-Natal. With years of experience in the industry, we specialize in delivering reliable, cost-effective solutions that ensure your home never runs out of water.
+                    </p>
+                    
+                    <p class="mb-4">
+                        Our team of certified professionals understands the unique challenges faced by South African homeowners, particularly in KZN where water security is paramount. We pride ourselves on using only the highest quality Jojo tanks, Grundfos pumps, and premium installation materials to guarantee long-lasting, dependable systems.
+                    </p>
+                    
+                    <p class="mb-4">
+                        From initial consultation to final installation and ongoing maintenance, BrettenWood Projects provides comprehensive service with a focus on customer satisfaction. We believe that every home deserves reliable water backup, and we're committed to making that a reality for families across KwaZulu-Natal.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>Licensed & Insured</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>Quality Guarantee</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>24/7 Support</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>KZN Specialists</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-stats">
+                    <div class="row text-center">
+                        <div class="col-6 mb-4">
+                            <div class="stat-item">
+                                <h3 class="counter display-4 fw-bold text-primary" data-target="500">0</h3>
+                                <p class="text-muted">Happy Customers</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <div class="stat-item">
+                                <h3 class="counter display-4 fw-bold text-primary" data-target="5">0</h3>
+                                <p class="text-muted">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <div class="stat-item">
+                                <h3 class="counter display-4 fw-bold text-primary" data-target="1000">0</h3>
+                                <p class="text-muted">Systems Installed</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <div class="stat-item">
+                                <h3 class="counter display-4 fw-bold text-primary" data-target="100">0</h3>
+                                <p class="text-muted">% Satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Comprehensive water backup and maintenance solutions
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-water display-4 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Water Backup Systems</h5>
+                        <p class="card-text">
+                            Complete water backup solutions with Jojo and Eco tanks ranging from 1000L to 5000L,
+                            including professional installation and setup.
+                        </p>
+                        <a href="{{ url_for('systems') }}" class="btn btn-dark btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-tools display-4 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">House Maintenance</h5>
+                        <p class="card-text">
+                            Comprehensive house maintenance services to keep your property in perfect condition, 
+                            from plumbing to general repairs.
+                        </p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-dark btn-custom">Get Quote</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-cogs display-4 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">System Maintenance</h5>
+                        <p class="card-text">
+                            Regular maintenance and servicing of your water backup systems to ensure 
+                            optimal performance and longevity.
+                        </p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-dark btn-custom">Schedule Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-right">
+                <h2 class="mb-3">Ready to Secure Your Water Supply?</h2>
+                <p class="lead mb-0">
+                    Contact BrettenWood Projects today for a free consultation and quote. 
+                    Let us help you choose the perfect water backup system for your home.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-custom btn-lg">
+                    <i class="fas fa-phone me-2"></i>Get Free Quote
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

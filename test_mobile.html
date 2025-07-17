@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Responsiveness Test - BrettenWood Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .pass { background: #d4edda; color: #155724; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .viewport-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .test-links a {
+            display: block;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .test-links a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>BrettenWood Projects - Mobile Responsiveness Test</h1>
+        
+        <div class="viewport-info">
+            <h3>Current Viewport Information</h3>
+            <p><strong>Screen Width:</strong> <span id="screenWidth"></span>px</p>
+            <p><strong>Screen Height:</strong> <span id="screenHeight"></span>px</p>
+            <p><strong>Device Type:</strong> <span id="deviceType"></span></p>
+            <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
+        </div>
+
+        <div class="test-item">
+            <h3>✅ Responsive Design Features</h3>
+            <div class="status pass">IMPLEMENTED</div>
+            <ul>
+                <li>Mobile-first CSS approach with Bootstrap 5</li>
+                <li>Flexible grid system for all screen sizes</li>
+                <li>Touch-friendly navigation with hamburger menu</li>
+                <li>Optimized font sizes for mobile reading</li>
+                <li>Proper viewport meta tag configuration</li>
+            </ul>
+        </div>
+
+        <div class="test-item">
+            <h3>✅ Navigation Responsiveness</h3>
+            <div class="status pass">OPTIMIZED</div>
+            <ul>
+                <li>Collapsible navigation menu for mobile devices</li>
+                <li>Touch-friendly button sizes (minimum 44px)</li>
+                <li>Proper spacing between navigation items</li>
+                <li>Fixed navigation bar for easy access</li>
+            </ul>
+        </div>
+
+        <div class="test-item">
+            <h3>✅ Content Layout</h3>
+            <div class="status pass">RESPONSIVE</div>
+            <ul>
+                <li>Single-column layout on mobile devices</li>
+                <li>Proper text wrapping and line heights</li>
+                <li>Optimized image scaling and positioning</li>
+                <li>Card-based design for easy mobile consumption</li>
+            </ul>
+        </div>
+
+        <div class="test-item">
+            <h3>✅ Forms and Interactions</h3>
+            <div class="status pass">MOBILE-FRIENDLY</div>
+            <ul>
+                <li>Large, touch-friendly form inputs</li>
+                <li>Proper keyboard types for mobile inputs</li>
+                <li>Star rating system optimized for touch</li>
+                <li>Accessible form labels and validation</li>
+            </ul>
+        </div>
+
+        <div class="test-item">
+            <h3>✅ Performance Optimizations</h3>
+            <div class="status pass">OPTIMIZED</div>
+            <ul>
+                <li>Lightweight CSS and JavaScript</li>
+                <li>CDN-hosted libraries for faster loading</li>
+                <li>Optimized animations for mobile performance</li>
+                <li>Lazy loading for images (where applicable)</li>
+            </ul>
+        </div>
+
+        <div class="test-item">
+            <h3>📱 Test All Pages on Different Devices</h3>
+            <div class="status info">TEST REQUIRED</div>
+            <p>Please test the following pages on various devices and screen sizes:</p>
+            
+            <div class="test-links">
+                <a href="http://localhost:5000/" target="_blank">Home Page</a>
+                <a href="http://localhost:5000/systems" target="_blank">Tank Systems</a>
+                <a href="http://localhost:5000/portfolio" target="_blank">Portfolio</a>
+                <a href="http://localhost:5000/reviews" target="_blank">Reviews</a>
+                <a href="http://localhost:5000/contact" target="_blank">Contact</a>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <h3>📋 Mobile Testing Checklist</h3>
+            <div class="status info">MANUAL TESTING</div>
+            <ul>
+                <li>☐ Test on actual mobile devices (iOS/Android)</li>
+                <li>☐ Test in browser developer tools mobile view</li>
+                <li>☐ Verify touch interactions work properly</li>
+                <li>☐ Check form submissions on mobile</li>
+                <li>☐ Test navigation menu functionality</li>
+                <li>☐ Verify all content is readable without zooming</li>
+                <li>☐ Test landscape and portrait orientations</li>
+                <li>☐ Check loading times on mobile networks</li>
+            </ul>
+        </div>
+
+        <div class="test-item">
+            <h3>🎯 Recommended Screen Sizes to Test</h3>
+            <div class="status info">TESTING GUIDE</div>
+            <ul>
+                <li><strong>Mobile Portrait:</strong> 375x667px (iPhone SE)</li>
+                <li><strong>Mobile Landscape:</strong> 667x375px</li>
+                <li><strong>Tablet Portrait:</strong> 768x1024px (iPad)</li>
+                <li><strong>Tablet Landscape:</strong> 1024x768px</li>
+                <li><strong>Desktop:</strong> 1920x1080px</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Display current viewport information
+        document.getElementById('screenWidth').textContent = window.innerWidth;
+        document.getElementById('screenHeight').textContent = window.innerHeight;
+        document.getElementById('userAgent').textContent = navigator.userAgent;
+        
+        // Determine device type
+        let deviceType = 'Desktop';
+        if (window.innerWidth <= 768) {
+            deviceType = window.innerWidth <= 480 ? 'Mobile' : 'Tablet';
+        }
+        document.getElementById('deviceType').textContent = deviceType;
+
+        // Update viewport info on resize
+        window.addEventListener('resize', function() {
+            document.getElementById('screenWidth').textContent = window.innerWidth;
+            document.getElementById('screenHeight').textContent = window.innerHeight;
+            
+            let deviceType = 'Desktop';
+            if (window.innerWidth <= 768) {
+                deviceType = window.innerWidth <= 480 ? 'Mobile' : 'Tablet';
+            }
+            document.getElementById('deviceType').textContent = deviceType;
+        });
+    </script>
+</body>
+</html>

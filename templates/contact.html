@@ -1,0 +1,429 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - BrettenWood Projects{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">
+                    <i class="fas fa-envelope me-3"></i>Contact Us
+                </h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                    Get in touch for a free consultation and quote
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    We're here to help with all your water backup and maintenance needs
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-card text-center">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone display-4 text-primary mb-3"></i>
+                    </div>
+                    <h5 class="fw-bold">Phone</h5>
+                    <p class="text-muted mb-3">Call us for immediate assistance</p>
+                    <div class="contact-details">
+                        <a href="tel:+27311234567" class="btn btn-outline-dark btn-custom">
+                            <i class="fas fa-phone me-2"></i>+27 (0) 31 123 4567
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-card text-center">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope display-4 text-primary mb-3"></i>
+                    </div>
+                    <h5 class="fw-bold">Email</h5>
+                    <p class="text-muted mb-3">Send us your questions anytime</p>
+                    <div class="contact-details">
+                        <a href="mailto:info@brettenwoodprojects.co.za" class="btn btn-outline-dark btn-custom">
+                            <i class="fas fa-envelope me-2"></i>info@brettenwoodprojects.co.za
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact-card text-center">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt display-4 text-primary mb-3"></i>
+                    </div>
+                    <h5 class="fw-bold">Service Area</h5>
+                    <p class="text-muted mb-3">We serve all of KwaZulu-Natal</p>
+                    <div class="contact-details">
+                        <span class="text-dark fw-bold">KwaZulu-Natal, South Africa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="contact-form-card" data-aos="fade-up">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white text-center">
+                            <h3 class="mb-0">
+                                <i class="fas fa-paper-plane me-2"></i>Send Us a Message
+                            </h3>
+                            <p class="mb-0 mt-2 opacity-75">Fill out the form below and we'll get back to you within 24 hours</p>
+                        </div>
+                        
+                        <div class="card-body p-4">
+                            <form method="POST" action="{{ url_for('submit_contact') }}" id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">
+                                            <i class="fas fa-user me-1"></i>First Name *
+                                        </label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">
+                                            <i class="fas fa-user me-1"></i>Last Name *
+                                        </label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">
+                                            <i class="fas fa-envelope me-1"></i>Email Address *
+                                        </label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">
+                                            <i class="fas fa-phone me-1"></i>Phone Number *
+                                        </label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="location" class="form-label">
+                                        <i class="fas fa-map-marker-alt me-1"></i>Location in KZN *
+                                    </label>
+                                    <select class="form-select" id="location" name="location" required>
+                                        <option value="">Select your area</option>
+                                        <option value="Durban">Durban</option>
+                                        <option value="Pietermaritzburg">Pietermaritzburg</option>
+                                        <option value="Newcastle">Newcastle</option>
+                                        <option value="Ladysmith">Ladysmith</option>
+                                        <option value="Empangeni">Empangeni</option>
+                                        <option value="Pinetown">Pinetown</option>
+                                        <option value="Chatsworth">Chatsworth</option>
+                                        <option value="Umlazi">Umlazi</option>
+                                        <option value="Phoenix">Phoenix</option>
+                                        <option value="Westville">Westville</option>
+                                        <option value="Hillcrest">Hillcrest</option>
+                                        <option value="Ballito">Ballito</option>
+                                        <option value="Other">Other (please specify in message)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="service" class="form-label">
+                                        <i class="fas fa-cogs me-1"></i>Service Required *
+                                    </label>
+                                    <select class="form-select" id="service" name="service" required>
+                                        <option value="">Select a service</option>
+                                        <option value="1000L Tank System">1000L Tank System</option>
+                                        <option value="2500L Tank System">2500L Tank System</option>
+                                        <option value="5000L Tank System">5000L Tank System</option>
+                                        <option value="Custom Tank System">Custom Tank System</option>
+                                        <option value="System Maintenance">System Maintenance</option>
+                                        <option value="House Maintenance">House Maintenance</option>
+                                        <option value="Emergency Repair">Emergency Repair</option>
+                                        <option value="Consultation">Free Consultation</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="urgency" class="form-label">
+                                        <i class="fas fa-clock me-1"></i>Urgency Level
+                                    </label>
+                                    <select class="form-select" id="urgency" name="urgency">
+                                        <option value="Normal">Normal (within 1 week)</option>
+                                        <option value="Urgent">Urgent (within 2-3 days)</option>
+                                        <option value="Emergency">Emergency (same day)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">
+                                        <i class="fas fa-comment me-1"></i>Message *
+                                    </label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" 
+                                              placeholder="Please provide details about your requirements, property size, current water situation, and any specific needs..." required></textarea>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            I would like to receive updates about water backup tips and special offers
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-dark btn-custom btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Areas -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Areas We Serve</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Professional water backup solutions throughout KwaZulu-Natal
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-area-card">
+                    <h6 class="fw-bold text-primary">
+                        <i class="fas fa-map-marker-alt me-2"></i>Durban Metro
+                    </h6>
+                    <ul class="list-unstyled text-muted">
+                        <li>Durban Central</li>
+                        <li>Durban North</li>
+                        <li>Westville</li>
+                        <li>Pinetown</li>
+                        <li>Chatsworth</li>
+                        <li>Phoenix</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-area-card">
+                    <h6 class="fw-bold text-primary">
+                        <i class="fas fa-map-marker-alt me-2"></i>South Coast
+                    </h6>
+                    <ul class="list-unstyled text-muted">
+                        <li>Amanzimtoti</li>
+                        <li>Scottburgh</li>
+                        <li>Port Shepstone</li>
+                        <li>Margate</li>
+                        <li>Ramsgate</li>
+                        <li>Hibberdene</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-area-card">
+                    <h6 class="fw-bold text-primary">
+                        <i class="fas fa-map-marker-alt me-2"></i>North Coast
+                    </h6>
+                    <ul class="list-unstyled text-muted">
+                        <li>Ballito</li>
+                        <li>Umhlanga</li>
+                        <li>La Mercy</li>
+                        <li>Stanger</li>
+                        <li>Empangeni</li>
+                        <li>Richards Bay</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-area-card">
+                    <h6 class="fw-bold text-primary">
+                        <i class="fas fa-map-marker-alt me-2"></i>Inland Areas
+                    </h6>
+                    <ul class="list-unstyled text-muted">
+                        <li>Pietermaritzburg</li>
+                        <li>Newcastle</li>
+                        <li>Ladysmith</li>
+                        <li>Estcourt</li>
+                        <li>Howick</li>
+                        <li>Mooi River</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Emergency Contact -->
+<section class="section-padding bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-right">
+                <h2 class="mb-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Emergency Service Available
+                </h2>
+                <p class="lead mb-0">
+                    Water system emergency? We offer 24/7 emergency repair services 
+                    throughout KZN. Call us now for immediate assistance.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <a href="tel:+27311234567" class="btn btn-outline-light btn-custom btn-lg">
+                    <i class="fas fa-phone me-2"></i>Emergency: +27 31 123 4567
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.contact-card {
+    padding: 40px 20px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form-card .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-area-card {
+    padding: 25px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.service-area-card:hover {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .contact-card {
+        padding: 30px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .service-area-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Form validation and enhancement
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending Message...';
+            submitBtn.disabled = true;
+        });
+        
+        // Real-time validation feedback
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.checkValidity()) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                } else {
+                    this.classList.remove('is-valid');
+                    this.classList.add('is-invalid');
+                }
+            });
+        });
+    }
+    
+    // Phone number formatting
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.startsWith('27')) {
+                    value = '+' + value;
+                } else if (value.startsWith('0')) {
+                    value = '+27' + value.substring(1);
+                } else {
+                    value = '+27' + value;
+                }
+            }
+            this.value = value;
+        });
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,391 @@
+{% extends "base.html" %}
+
+{% block title %}Jojo Tank Systems - BrettenWood Projects{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">
+                    <i class="fas fa-cogs me-3"></i>Jojo Tank Systems
+                </h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                    Professional water backup solutions from 1000L to 5000L capacity
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Systems Overview -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Choose Your Perfect System</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    We offer both Jojo and Eco tank systems with professional installation, quality pumps, and comprehensive warranty
+                </p>
+                <div class="alert alert-info text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Note:</strong> Prices may change based on current market conditions and specific installation requirements. Contact us for current pricing.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Jojo Tank Systems -->
+        <div class="row mb-5">
+            <div class="col-12 text-center mb-4">
+                <h3 class="fw-bold text-primary" data-aos="fade-up">
+                    <img src="{{ url_for('static', filename='images/jojo-logo.png') }}" alt="Jojo" class="brand-logo me-2" onerror="this.style.display='none';">
+                    Jojo Tank Systems
+                </h3>
+                <p class="text-muted" data-aos="fade-up" data-aos-delay="100">Premium quality tanks with excellent durability</p>
+            </div>
+            {% for key, system in tank_systems.items() if system.brand == 'Jojo' %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="card h-100 system-card">
+                    <div class="card-header bg-dark text-white text-center">
+                        <div class="brand-badge mb-2">
+                            <span class="badge bg-primary">{{ system.brand }}</span>
+                        </div>
+                        <h4 class="mb-0">{{ system.name }}</h4>
+                        <div class="price-badge mt-2">
+                            <span class="h5 fw-bold">{{ system.price }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="system-image text-center mb-4">
+                            <img src="{{ url_for('static', filename='images/' + system.image) }}" alt="{{ system.name }}" class="tank-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-water display-3 text-primary" style="display: none;"></i>
+                        </div>
+                        
+                        <div class="system-specs mb-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="fas fa-info-circle me-2"></i>Specifications
+                            </h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-tint me-2 text-primary"></i>
+                                    <strong>Capacity:</strong> {{ system.capacity }}
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-cog me-2 text-primary"></i>
+                                    <strong>Pump:</strong> {{ system.pump }}
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-bolt me-2 text-primary"></i>
+                                    <strong>Specs:</strong> {{ system.pump_specs }}
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="system-includes mb-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="fas fa-check-circle me-2"></i>What's Included
+                            </h6>
+                            <ul class="list-unstyled">
+                                {% for item in system.includes %}
+                                <li class="mb-1">
+                                    <i class="fas fa-check me-2 text-success"></i>{{ item }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer bg-light text-center">
+                        <a href="{{ url_for('contact') }}" class="btn btn-dark btn-custom w-100">
+                            <i class="fas fa-shopping-cart me-2"></i>Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Eco Tank Systems -->
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h3 class="fw-bold text-success" data-aos="fade-up">
+                    <img src="{{ url_for('static', filename='images/eco-logo.png') }}" alt="Eco" class="brand-logo me-2" onerror="this.style.display='none';">
+                    Eco Tank Systems
+                </h3>
+                <p class="text-muted" data-aos="fade-up" data-aos-delay="100">Environmentally friendly and cost-effective solutions</p>
+            </div>
+            {% for key, system in tank_systems.items() if system.brand == 'Eco' %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="card h-100 system-card">
+                    <div class="card-header bg-success text-white text-center">
+                        <div class="brand-badge mb-2">
+                            <span class="badge bg-light text-success">{{ system.brand }}</span>
+                        </div>
+                        <h4 class="mb-0">{{ system.name }}</h4>
+                        <div class="price-badge mt-2">
+                            <span class="h5 fw-bold">{{ system.price }}</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="system-image text-center mb-4">
+                            <img src="{{ url_for('static', filename='images/' + system.image) }}" alt="{{ system.name }}" class="tank-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-water display-3 text-success" style="display: none;"></i>
+                        </div>
+
+                        <div class="system-specs mb-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="fas fa-info-circle me-2"></i>Specifications
+                            </h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-tint me-2 text-success"></i>
+                                    <strong>Capacity:</strong> {{ system.capacity }}
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-cog me-2 text-success"></i>
+                                    <strong>Pump:</strong> {{ system.pump }}
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-bolt me-2 text-success"></i>
+                                    <strong>Specs:</strong> {{ system.pump_specs }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="system-includes mb-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="fas fa-check-circle me-2"></i>What's Included
+                            </h6>
+                            <ul class="list-unstyled">
+                                {% for item in system.includes %}
+                                <li class="mb-1">
+                                    <i class="fas fa-check me-2 text-success"></i>{{ item }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-light text-center">
+                        <a href="{{ url_for('contact') }}" class="btn btn-success btn-custom w-100">
+                            <i class="fas fa-shopping-cart me-2"></i>Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- System Features -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Why Choose Our Systems?</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Premium quality components and professional installation guaranteed
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-award display-4 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">Premium Quality</h5>
+                    <p class="text-muted">
+                        Only the finest Jojo tanks and Grundfos pumps for maximum durability and performance.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-tools display-4 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">Professional Installation</h5>
+                    <p class="text-muted">
+                        Expert installation by certified technicians with years of experience in water systems.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-shield-alt display-4 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">Comprehensive Warranty</h5>
+                    <p class="text-muted">
+                        Full warranty coverage on all components and installation work for your peace of mind.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-headset display-4 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">24/7 Support</h5>
+                    <p class="text-muted">
+                        Round-the-clock support and maintenance services to keep your system running smoothly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Installation Process -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Our Installation Process</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Simple, efficient, and professional from start to finish
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="process-step text-center">
+                    <div class="step-number">
+                        <span class="display-4 fw-bold text-primary">1</span>
+                    </div>
+                    <h5 class="fw-bold mt-3">Site Assessment</h5>
+                    <p class="text-muted">
+                        Free on-site evaluation to determine the best system and placement for your property.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="process-step text-center">
+                    <div class="step-number">
+                        <span class="display-4 fw-bold text-primary">2</span>
+                    </div>
+                    <h5 class="fw-bold mt-3">Custom Quote</h5>
+                    <p class="text-muted">
+                        Detailed quote with transparent pricing and timeline for your specific requirements.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="process-step text-center">
+                    <div class="step-number">
+                        <span class="display-4 fw-bold text-primary">3</span>
+                    </div>
+                    <h5 class="fw-bold mt-3">Professional Installation</h5>
+                    <p class="text-muted">
+                        Expert installation by our certified team with minimal disruption to your daily routine.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="process-step text-center">
+                    <div class="step-number">
+                        <span class="display-4 fw-bold text-primary">4</span>
+                    </div>
+                    <h5 class="fw-bold mt-3">Testing & Handover</h5>
+                    <p class="text-muted">
+                        Complete system testing and training to ensure you're comfortable with your new system.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-right">
+                <h2 class="mb-3">Ready to Install Your Water Backup System?</h2>
+                <p class="lead mb-0">
+                    Contact us today for a free site assessment and personalized quote. 
+                    Our experts will help you choose the perfect system for your needs.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-custom btn-lg">
+                    <i class="fas fa-calculator me-2"></i>Get Free Quote
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.system-card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.system-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.price-badge {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.feature-card {
+    padding: 30px 20px;
+    height: 100%;
+}
+
+.process-step {
+    padding: 20px;
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.tank-image {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.brand-logo {
+    height: 30px;
+    width: auto;
+    max-width: 100px;
+    object-fit: contain;
+}
+
+.brand-badge {
+    margin-bottom: 10px;
+}
+</style>
+{% endblock %}

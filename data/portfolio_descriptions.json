@@ -1,0 +1,17 @@
+{
+  "job1": {
+    "title": "Tongaat",
+    "description": "5000lt LIN Tank powered by a 0.75kw Centrifugal Pump secured with our custom fabricated Anti-Theft Cage.",
+    "category": "residential"
+  },
+  "job2": {
+    "title": "Pietermaritzburg",
+    "description": "Successful installation of a 5250lt JoJo tank paired with a 1.1kw ZIL VSD, set up on a buffer connection to ensure a constant flow of municipal water into the tank, which is then fed into the home via a 3 Stage Filter with UV.",
+    "category": "residential"
+  },
+  "job3": {
+    "title": "Amanzimtoti",
+    "description": "20 inch Big Blue 3 Stage Filtration with 55w UV setup. These units work exceptionally well with images 4 & 5 detailing the quality of municipal water with just 6 months of usage!",
+    "category": "residential"
+  }
+}

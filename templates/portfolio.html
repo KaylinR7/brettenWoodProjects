@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio - BrettenWood Projects{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">
+                    <i class="fas fa-images me-3"></i>Our Portfolio
+                </h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                    Showcasing our completed water backup system installations across KZN
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Stats -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card">
+                    <i class="fas fa-home display-3 text-primary mb-3"></i>
+                    <h3 class="counter fw-bold" data-target="500">0</h3>
+                    <p class="text-muted">Homes Served</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-card">
+                    <i class="fas fa-water display-3 text-primary mb-3"></i>
+                    <h3 class="counter fw-bold" data-target="1000">0</h3>
+                    <p class="text-muted">Systems Installed</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-card">
+                    <i class="fas fa-map-marker-alt display-3 text-primary mb-3"></i>
+                    <h3 class="counter fw-bold" data-target="50">0</h3>
+                    <p class="text-muted">Cities in KZN</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-card">
+                    <i class="fas fa-star display-3 text-primary mb-3"></i>
+                    <h3 class="counter fw-bold" data-target="98">0</h3>
+                    <p class="text-muted">% Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Gallery -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Recent Installations</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    See the quality of our work and the satisfaction of our customers
+                </p>
+            </div>
+        </div>
+        
+        <!-- Filter Buttons -->
+        <div class="row mb-5">
+            <div class="col-lg-12 text-center">
+                <div class="portfolio-filters" data-aos="fade-up">
+                    <button class="btn btn-outline-dark btn-custom me-2 mb-2 filter-btn active" data-filter="all">
+                        All Projects
+                    </button>
+                    <button class="btn btn-outline-dark btn-custom me-2 mb-2 filter-btn" data-filter="residential">
+                        Residential
+                    </button>
+                    <button class="btn btn-outline-dark btn-custom me-2 mb-2 filter-btn" data-filter="commercial">
+                        Commercial
+                    </button>
+                    <button class="btn btn-outline-dark btn-custom me-2 mb-2 filter-btn" data-filter="maintenance">
+                        Maintenance
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio Items - Automatically Generated -->
+        <div class="row portfolio-grid">
+            {% if portfolio_images %}
+                {% for project in portfolio_images %}
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item {{ project.category }}" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image-container">
+                            <img src="{{ url_for('static', filename='images/portfolio/' + project.image) }}"
+                                 alt="{{ project.title }}"
+                                 class="portfolio-image img-fluid">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h5 class="text-white">{{ project.title }}</h5>
+                                    <p class="text-white-50">Professional Water Backup System</p>
+                                    <button class="btn btn-outline-light btn-sm portfolio-view"
+                                            data-title="{{ project.title }}"
+                                            data-description="{{ project.description }}"
+                                            data-image="{{ project.image }}">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h6 class="fw-bold">{{ project.title }}</h6>
+                            <p class="text-muted small">Water System • {{ project.category.title() }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Fallback if no images found -->
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Portfolio Coming Soon!</strong><br>
+                        Add images to <code>static/images/portfolio/</code> to display your projects here.
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+<!-- Customer Testimonials -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">What Our Customers Say</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Real feedback from satisfied customers across KZN
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="mb-3">
+                            "Excellent service from start to finish. The team was professional, 
+                            punctual, and the installation was completed perfectly. Our 5000L system 
+                            has been working flawlessly for over a year now."
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Sarah Johnson</strong>
+                            <small class="text-muted d-block">Durban North</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="mb-3">
+                            "BrettenWood Projects saved us during the water crisis. Their quick 
+                            response and quality installation meant we never had to worry about 
+                            water supply again. Highly recommended!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Michael Patel</strong>
+                            <small class="text-muted d-block">Pietermaritzburg</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="mb-3">
+                            "Professional, reliable, and affordable. The 2500L system they installed 
+                            for our family home has been perfect. Great customer service and 
+                            ongoing support too."
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Lisa van der Merwe</strong>
+                            <small class="text-muted d-block">Westville</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-right">
+                <h2 class="mb-3">Ready to Join Our Satisfied Customers?</h2>
+                <p class="lead mb-0">
+                    Contact BrettenWood Projects today and let us create a custom water backup 
+                    solution for your property. Quality guaranteed!
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-custom btn-lg">
+                    <i class="fas fa-phone me-2"></i>Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.portfolio-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-image-container {
+    position: relative;
+    height: 250px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.portfolio-placeholder {
+    text-align: center;
+    color: #6c757d;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-info {
+    text-align: center;
+    padding: 20px;
+}
+
+.portfolio-content {
+    padding: 20px;
+    background: white;
+}
+
+.filter-btn {
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: #000;
+    color: white;
+    border-color: #000;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card {
+    padding: 30px 20px;
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Portfolio filtering
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter items
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.classList.contains(filter)) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Portfolio modal
+    const portfolioViewBtns = document.querySelectorAll('.portfolio-view');
+    portfolioViewBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const title = this.getAttribute('data-title');
+            const description = this.getAttribute('data-description');
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>${description}</p>
+                            <div class="text-center mt-4">
+                                <div class="portfolio-placeholder">
+                                    <i class="fas fa-image display-3 text-primary"></i>
+                                    <p class="mt-2 text-muted">Project completion photo would be displayed here</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{{ url_for('contact') }}" class="btn btn-dark">Get Similar Quote</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+            
+            modal.addEventListener('hidden.bs.modal', function() {
+                document.body.removeChild(modal);
+            });
+        });
+    });
+});
+</script>
+{% endblock %}
